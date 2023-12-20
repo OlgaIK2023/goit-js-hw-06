@@ -1,9 +1,8 @@
 class Storage {
   #items = [];
-  
+
   constructor(items) {
     this.#items = items;
-    
   }
 
   getItems() {
@@ -15,10 +14,8 @@ class Storage {
   }
 
   removeItem(itemToRemove) {
-this.#items.splice(1,1);
-  
-}
-
+    this.#items.splice(this.#items.indexOf(itemToRemove), 1);
+  }
 }
 
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);

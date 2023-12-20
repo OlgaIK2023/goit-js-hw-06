@@ -1,47 +1,34 @@
-const sortByDescendingFriendCount = (users) => {
-  
-  const newArray = users.toSorted((a, b) => b.friends.length - a.friends.length);
+class StringBuilder {
+  #value = [];
 
-  return newArray;
-  
-};
+  constructor([initialValue]) {
+    this.#value = [initialValue];
+  }
 
-console.log(
-  sortByDescendingFriendCount([
-    {
-      name: "Moore Hensley",
-      friends: ["Sharron Pace"],
-      gender: "male"
-    },
-    {
-      name: "Sharlene Bush",
-      friends: ["Briana Decker", "Sharron Pace"],
-      gender: "female"
-    },
-    {
-      name: "Ross Vazquez",
-      friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-      gender: "male"
-    },
-    {
-      name: "Elma Head",
-      friends: ["Goldie Gentry", "Aisha Tran"],
-      gender: "female"
-    },
-    {
-      name: "Carey Barr",
-      friends: ["Jordan Sampson", "Eddie Strong"],
-      gender: "male"
-    },
-    {
-      name: "Blackburn Dotson",
-      friends: ["Jacklyn Lucas", "Linda Chapman"],
-      gender: "male"
-    },
-    {
-      name: "Sheree Anthony",
-      friends: ["Goldie Gentry", "Briana Decker"],
-      gender: "female"
-    }
-  ])
-);
+  getValue() {
+    return this.#value.join('');
+  }
+
+  padEnd(endStr) {
+    this.#value.push(endStr);
+  }
+
+  padStart(startStr) {
+    this.#value.unshift(startStr);
+    
+  }
+
+  padBoth(bothStr) {
+    this.#value.unshift(bothStr);
+    this.#value.push(bothStr);
+  }
+}
+
+const builder = new StringBuilder(".");
+console.log(builder.getValue());
+builder.padStart("^");
+console.log(builder.getValue());
+builder.padEnd("^");
+console.log(builder.getValue());
+builder.padBoth("=");
+console.log(builder.getValue());
