@@ -1,26 +1,29 @@
 class StringBuilder {
-  #value = [];
+  #value;
 
-  constructor([initialValue]) {
-    this.#value = [initialValue];
+  constructor(initialValue) {
+    if (typeof initialValue === "string") {
+      this.#value = initialValue;
+    } else {
+      this.#value = "";
+    }
   }
 
   getValue() {
-    return this.#value.join('');
+    return this.#value;
   }
 
-  padEnd(endStr) {
-    this.#value.push(endStr);
+  padEnd(str) {
+    this.#value += str;
   }
 
-  padStart(startStr) {
-    this.#value.unshift(startStr);
-    
+  padStart(str) {
+    this.#value = str + this.#value;
   }
 
-  padBoth(bothStr) {
-    this.#value.unshift(bothStr);
-    this.#value.push(bothStr);
+  padBoth(str) {
+    this.#value += str;
+    this.#value = str + this.#value;
   }
 }
 
